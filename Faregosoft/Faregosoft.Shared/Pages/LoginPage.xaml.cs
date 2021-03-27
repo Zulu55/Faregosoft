@@ -1,4 +1,5 @@
 ﻿using Faregosoft.Helpers;
+using Faregosoft.Models;
 using System;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -38,7 +39,22 @@ namespace Faregosoft.Pages
                 return;
             }
 
-            messageDialog = new MessageDialog("Vamos bien!", "OK");
+            Response response = await ApiService.LoginAsync(
+                "https://localhost:44377",
+                "api",
+                "Users",
+                EmailTextBox.Text,
+                PasswordPasswordBox.Password);
+
+            if (!response.IsSuccess)
+            {
+                messageDialog = new MessageDialog(response.Message, "Error");
+                await messageDialog.ShowAsync();
+                return;
+            }
+
+            User user = (User)response.Result;
+            messageDialog = new MessageDialog($"Bienvenido: {user.FirstName} {user.LastName}", "OK");
             await messageDialog.ShowAsync();
         }
     }

@@ -10,6 +10,9 @@
       -->
       <Version>6.2.11</Version>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
+    </PackageReference>
     <PackageReference Include="Uno.Core" Version="2.1.0" />
     <PackageReference Include="Uno.UI" Version="3.5.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
@@ -18,7 +21,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>81d9c899-49f5-49be-9c2b-a091a278944f</ProjectGuid>
+    <ProjectGuid>{81D9C899-49F5-49BE-9C2B-A091A278944F}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Faregosoft</RootNamespace>
