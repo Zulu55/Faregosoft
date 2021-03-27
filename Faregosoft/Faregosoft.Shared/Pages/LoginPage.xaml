@@ -25,6 +25,7 @@
             <TextBlock Text="Contraseña" Margin="5"/>
             <PasswordBox x:Name="PasswordPasswordBox" PlaceholderText="Ingresa tu contraseña..." Margin="5" Width="200"/>
             <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Stretch" Margin="5,10" Background="Navy" Foreground="White" FontWeight="Bold" Click="LoginButton_Click"/>
+            <Button x:Name="RegisterButton" Content="Registrar Nuevo Usuario" HorizontalAlignment="Stretch" Margin="5,10" Background="Silver" Foreground="Black" FontWeight="Bold" Click="RegisterButton_Click"/>
         </StackPanel>
     </Grid>
 </Page>

@@ -14,6 +14,14 @@ namespace Faregosoft.Pages
             InitializeComponent();
         }
 
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window window = Window.Current;
+            Frame rootFrame = window.Content as Frame;
+            window.Content = rootFrame;
+            rootFrame.Navigate(typeof(RegisterPage));
+        }
+
         private async void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             MessageDialog messageDialog;
