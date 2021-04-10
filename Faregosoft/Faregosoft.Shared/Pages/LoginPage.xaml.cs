@@ -1,6 +1,7 @@
 ﻿using Faregosoft.Helpers;
 using Faregosoft.Models;
 using System;
+using System.Threading.Tasks;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -24,35 +25,27 @@ namespace Faregosoft.Pages
 
         private async void LoginButton_Click(object sender, RoutedEventArgs e)
         {
+            bool isValid = await ValidateFormAsync();
+            if (!isValid)
+            {
+                return;
+            }
+
+            MyProgressRing.IsActive = true;
+            LoginButton.IsEnabled = false;
+            RegisterButton.IsEnabled = false;
+
             MessageDialog messageDialog;
-
-            if (string.IsNullOrEmpty(EmailTextBox.Text))
-            {
-                messageDialog = new MessageDialog("Debes ingresar tu email.", "Error");
-                await messageDialog.ShowAsync();
-                return;
-            }
-
-            if (!RegexUtilities.IsValidEmail(EmailTextBox.Text))
-            {
-                messageDialog = new MessageDialog("Debes ingresar un email válido.", "Error");
-                await messageDialog.ShowAsync();
-                return;
-            }
-
-            if (string.IsNullOrEmpty(PasswordPasswordBox.Password))
-            {
-                messageDialog = new MessageDialog("Debes ingresar tu contraseña.", "Error");
-                await messageDialog.ShowAsync();
-                return;
-            }
-
             Response response = await ApiService.LoginAsync(
                 "https://localhost:44377",
                 "api",
                 "Users",
                 EmailTextBox.Text,
                 PasswordPasswordBox.Password);
+
+            MyProgressRing.IsActive = false;
+            LoginButton.IsEnabled = true;
+            RegisterButton.IsEnabled = true;
 
             if (!response.IsSuccess)
             {
@@ -62,8 +55,35 @@ namespace Faregosoft.Pages
             }
 
             User user = (User)response.Result;
-            messageDialog = new MessageDialog($"Bienvenido: {user.FirstName} {user.LastName}", "OK");
-            await messageDialog.ShowAsync();
+            Frame.Navigate(typeof(MainPage), user);
+        }
+
+        private async Task<bool> ValidateFormAsync()
+        {
+            MessageDialog messageDialog;
+
+            if (string.IsNullOrEmpty(EmailTextBox.Text))
+            {
+                messageDialog = new MessageDialog("Debes ingresar tu email.", "Error");
+                await messageDialog.ShowAsync();
+                return false;
+            }
+
+            if (!RegexUtilities.IsValidEmail(EmailTextBox.Text))
+            {
+                messageDialog = new MessageDialog("Debes ingresar un email válido.", "Error");
+                await messageDialog.ShowAsync();
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(PasswordPasswordBox.Password))
+            {
+                messageDialog = new MessageDialog("Debes ingresar tu contraseña.", "Error");
+                await messageDialog.ShowAsync();
+                return false;
+            }
+
+            return true;
         }
     }
 }
