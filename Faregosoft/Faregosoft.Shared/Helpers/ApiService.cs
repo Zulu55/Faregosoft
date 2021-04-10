@@ -9,12 +9,7 @@ namespace Faregosoft.Helpers
 {
     public class ApiService
     {
-        public static async Task<Response> LoginAsync(
-            string urlBase, 
-            string servicePrefix, 
-            string controller, 
-            string email, 
-            string password)
+        public static async Task<Response> LoginAsync(string urlBase, string servicePrefix, string controller, string email, string password)
         {
             try
             {
@@ -63,6 +58,50 @@ namespace Faregosoft.Helpers
                 {
                     IsSuccess = false,
                     Message = ex.Message
+                };
+            }
+        }
+
+        public static async Task<Response> RegisterAsync(string urlBase, string servicePrefix, string controller, RegisterUserModel model)
+        {
+            try
+            {
+                string request = JsonConvert.SerializeObject(model);
+                StringContent content = new StringContent(request, Encoding.UTF8, "application/json");
+
+                HttpClientHandler handler = new HttpClientHandler()
+                {
+                    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+                };
+
+                HttpClient client = new HttpClient(handler)
+                {
+                    BaseAddress = new Uri(urlBase)
+                };
+
+                string url = $"{servicePrefix}/{controller}";
+                HttpResponseMessage response = await client.PostAsync(url, content);
+                string answer = await response.Content.ReadAsStringAsync();
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = answer,
+                    };
+                }
+
+                return new Response
+                {
+                    IsSuccess = true,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
                 };
             }
         }
