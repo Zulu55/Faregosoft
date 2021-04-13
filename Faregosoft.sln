@@ -13,19 +13,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faregosoft.iOS", "Faregosof
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faregosoft.UWP", "Faregosoft\Faregosoft.UWP\Faregosoft.UWP.csproj", "{81D9C899-49F5-49BE-9C2B-A091A278944F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faregosoft.Wasm", "Faregosoft\Faregosoft.Wasm\Faregosoft.Wasm.csproj", "{AEF55C89-557A-43E0-9B99-920A9C81A795}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faregosoft.Wasm", "Faregosoft\Faregosoft.Wasm\Faregosoft.Wasm.csproj", "{AEF55C89-557A-43E0-9B99-920A9C81A795}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faregosoft.macOS", "Faregosoft\Faregosoft.macOS\Faregosoft.macOS.csproj", "{6E9AA21C-8837-4275-A2DB-3C80E811FB60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faregosoft.Skia.Wpf.Host", "Faregosoft\Faregosoft.Skia.Wpf.Host\Faregosoft.Skia.Wpf.Host.csproj", "{03A34F9E-9D9A-408E-8724-6601BC9982B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faregosoft.Skia.Wpf.Host", "Faregosoft\Faregosoft.Skia.Wpf.Host\Faregosoft.Skia.Wpf.Host.csproj", "{03A34F9E-9D9A-408E-8724-6601BC9982B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faregosoft.Skia.Wpf", "Faregosoft\Faregosoft.Skia.Wpf\Faregosoft.Skia.Wpf.csproj", "{E095E84A-6F38-4C13-AA82-7639D033595A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faregosoft.Skia.Wpf", "Faregosoft\Faregosoft.Skia.Wpf\Faregosoft.Skia.Wpf.csproj", "{E095E84A-6F38-4C13-AA82-7639D033595A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faregosoft.Skia.Gtk", "Faregosoft\Faregosoft.Skia.Gtk\Faregosoft.Skia.Gtk.csproj", "{D5A081DE-0C42-4722-A195-D1BA813E3E67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faregosoft.Skia.Gtk", "Faregosoft\Faregosoft.Skia.Gtk\Faregosoft.Skia.Gtk.csproj", "{D5A081DE-0C42-4722-A195-D1BA813E3E67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faregosoft.Skia.Tizen", "Faregosoft\Faregosoft.Skia.Tizen\Faregosoft.Skia.Tizen.csproj", "{390F365F-1B12-467E-A172-6D5DAA0A4EA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faregosoft.Skia.Tizen", "Faregosoft\Faregosoft.Skia.Tizen\Faregosoft.Skia.Tizen.csproj", "{390F365F-1B12-467E-A172-6D5DAA0A4EA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faregosoft.Api", "Faregosoft.Api\Faregosoft.Api.csproj", "{68982908-47ED-4639-80AB-8AA8C964BA27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faregosoft.Api", "Faregosoft.Api\Faregosoft.Api.csproj", "{68982908-47ED-4639-80AB-8AA8C964BA27}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -113,8 +113,6 @@ Global
 		{601FDA62-6763-425A-A10B-514261AE7556}.AppStore|x86.Build.0 = Debug|Any CPU
 		{601FDA62-6763-425A-A10B-514261AE7556}.AppStore|x86.Deploy.0 = Debug|Any CPU
 		{601FDA62-6763-425A-A10B-514261AE7556}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{601FDA62-6763-425A-A10B-514261AE7556}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{601FDA62-6763-425A-A10B-514261AE7556}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{601FDA62-6763-425A-A10B-514261AE7556}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{601FDA62-6763-425A-A10B-514261AE7556}.Debug|ARM.Build.0 = Debug|Any CPU
 		{601FDA62-6763-425A-A10B-514261AE7556}.Debug|ARM.Deploy.0 = Debug|Any CPU
@@ -233,8 +231,6 @@ Global
 		{81D9C899-49F5-49BE-9C2B-A091A278944F}.AppStore|x86.Build.0 = Debug|x86
 		{81D9C899-49F5-49BE-9C2B-A091A278944F}.AppStore|x86.Deploy.0 = Debug|x86
 		{81D9C899-49F5-49BE-9C2B-A091A278944F}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{81D9C899-49F5-49BE-9C2B-A091A278944F}.Debug|Any CPU.Build.0 = Debug|x86
-		{81D9C899-49F5-49BE-9C2B-A091A278944F}.Debug|Any CPU.Deploy.0 = Debug|x86
 		{81D9C899-49F5-49BE-9C2B-A091A278944F}.Debug|ARM.ActiveCfg = Debug|ARM
 		{81D9C899-49F5-49BE-9C2B-A091A278944F}.Debug|ARM.Build.0 = Debug|ARM
 		{81D9C899-49F5-49BE-9C2B-A091A278944F}.Debug|ARM.Deploy.0 = Debug|ARM
@@ -293,7 +289,6 @@ Global
 		{AEF55C89-557A-43E0-9B99-920A9C81A795}.AppStore|x86.ActiveCfg = Debug|Any CPU
 		{AEF55C89-557A-43E0-9B99-920A9C81A795}.AppStore|x86.Build.0 = Debug|Any CPU
 		{AEF55C89-557A-43E0-9B99-920A9C81A795}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AEF55C89-557A-43E0-9B99-920A9C81A795}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEF55C89-557A-43E0-9B99-920A9C81A795}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{AEF55C89-557A-43E0-9B99-920A9C81A795}.Debug|ARM.Build.0 = Debug|Any CPU
 		{AEF55C89-557A-43E0-9B99-920A9C81A795}.Debug|ARM64.ActiveCfg = Debug|Any CPU
@@ -393,7 +388,6 @@ Global
 		{03A34F9E-9D9A-408E-8724-6601BC9982B6}.AppStore|x86.ActiveCfg = Debug|Any CPU
 		{03A34F9E-9D9A-408E-8724-6601BC9982B6}.AppStore|x86.Build.0 = Debug|Any CPU
 		{03A34F9E-9D9A-408E-8724-6601BC9982B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{03A34F9E-9D9A-408E-8724-6601BC9982B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03A34F9E-9D9A-408E-8724-6601BC9982B6}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{03A34F9E-9D9A-408E-8724-6601BC9982B6}.Debug|ARM.Build.0 = Debug|Any CPU
 		{03A34F9E-9D9A-408E-8724-6601BC9982B6}.Debug|ARM64.ActiveCfg = Debug|Any CPU
@@ -449,7 +443,6 @@ Global
 		{E095E84A-6F38-4C13-AA82-7639D033595A}.AppStore|x86.ActiveCfg = Debug|Any CPU
 		{E095E84A-6F38-4C13-AA82-7639D033595A}.AppStore|x86.Build.0 = Debug|Any CPU
 		{E095E84A-6F38-4C13-AA82-7639D033595A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E095E84A-6F38-4C13-AA82-7639D033595A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E095E84A-6F38-4C13-AA82-7639D033595A}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{E095E84A-6F38-4C13-AA82-7639D033595A}.Debug|ARM.Build.0 = Debug|Any CPU
 		{E095E84A-6F38-4C13-AA82-7639D033595A}.Debug|ARM64.ActiveCfg = Debug|Any CPU
@@ -505,7 +498,6 @@ Global
 		{D5A081DE-0C42-4722-A195-D1BA813E3E67}.AppStore|x86.ActiveCfg = Debug|Any CPU
 		{D5A081DE-0C42-4722-A195-D1BA813E3E67}.AppStore|x86.Build.0 = Debug|Any CPU
 		{D5A081DE-0C42-4722-A195-D1BA813E3E67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D5A081DE-0C42-4722-A195-D1BA813E3E67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5A081DE-0C42-4722-A195-D1BA813E3E67}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{D5A081DE-0C42-4722-A195-D1BA813E3E67}.Debug|ARM.Build.0 = Debug|Any CPU
 		{D5A081DE-0C42-4722-A195-D1BA813E3E67}.Debug|ARM64.ActiveCfg = Debug|Any CPU
@@ -561,7 +553,6 @@ Global
 		{390F365F-1B12-467E-A172-6D5DAA0A4EA2}.AppStore|x86.ActiveCfg = Debug|Any CPU
 		{390F365F-1B12-467E-A172-6D5DAA0A4EA2}.AppStore|x86.Build.0 = Debug|Any CPU
 		{390F365F-1B12-467E-A172-6D5DAA0A4EA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{390F365F-1B12-467E-A172-6D5DAA0A4EA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{390F365F-1B12-467E-A172-6D5DAA0A4EA2}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{390F365F-1B12-467E-A172-6D5DAA0A4EA2}.Debug|ARM.Build.0 = Debug|Any CPU
 		{390F365F-1B12-467E-A172-6D5DAA0A4EA2}.Debug|ARM64.ActiveCfg = Debug|Any CPU
