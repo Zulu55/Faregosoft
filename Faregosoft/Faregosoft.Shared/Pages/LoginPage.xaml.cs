@@ -36,12 +36,7 @@ namespace Faregosoft.Pages
             RegisterButton.IsEnabled = false;
 
             MessageDialog messageDialog;
-            Response response = await ApiService.LoginAsync(
-                "https://localhost:44377",
-                "api",
-                "Users",
-                EmailTextBox.Text,
-                PasswordPasswordBox.Password);
+            Response response = await ApiService.LoginAsync("https://faregosoftapi.azurewebsites.net/", "api", "Users", EmailTextBox.Text, PasswordPasswordBox.Password);
 
             MyProgressRing.IsActive = false;
             LoginButton.IsEnabled = true;
