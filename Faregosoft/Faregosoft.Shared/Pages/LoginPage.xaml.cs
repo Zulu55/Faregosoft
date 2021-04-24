@@ -1,4 +1,5 @@
-﻿using Faregosoft.Helpers;
+﻿using Faregosoft.Components;
+using Faregosoft.Helpers;
 using Faregosoft.Models;
 using System;
 using System.Threading.Tasks;
@@ -31,20 +32,14 @@ namespace Faregosoft.Pages
                 return;
             }
 
-            MyProgressRing.IsActive = true;
-            LoginButton.IsEnabled = false;
-            RegisterButton.IsEnabled = false;
-
-            MessageDialog messageDialog;
-            Response response = await ApiService.LoginAsync("https://faregosoftapi.azurewebsites.net/", "api", "Users", EmailTextBox.Text, PasswordPasswordBox.Password);
-
-            MyProgressRing.IsActive = false;
-            LoginButton.IsEnabled = true;
-            RegisterButton.IsEnabled = true;
+            Loader loader = new Loader("Por favor espere...");
+            loader.Show();
+            Response response = await ApiService.LoginAsync("https://localhost:44377/", "api", "Users", EmailTextBox.Text, PasswordPasswordBox.Password);
+            loader.Close();
 
             if (!response.IsSuccess)
             {
-                messageDialog = new MessageDialog(response.Message, "Error");
+                MessageDialog messageDialog = new MessageDialog(response.Message, "Error");
                 await messageDialog.ShowAsync();
                 return;
             }

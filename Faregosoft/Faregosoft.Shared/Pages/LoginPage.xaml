@@ -24,7 +24,6 @@
             <TextBox x:Name="EmailTextBox" Text="juan@yopmail.com" PlaceholderText="Ingresa tu email..." Margin="5" Width="200"/>
             <TextBlock Text="Contraseña" Margin="5"/>
             <PasswordBox x:Name="PasswordPasswordBox" Password="123456" PlaceholderText="Ingresa tu contraseña..." Margin="5" Width="200"/>
-            <ProgressRing x:Name="MyProgressRing"/>
             <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Stretch" Margin="5,10" Background="Navy" Foreground="White" FontWeight="Bold" Click="LoginButton_Click"/>
             <Button x:Name="RegisterButton" Content="Registrar Nuevo Usuario" HorizontalAlignment="Stretch" Margin="5,10" Background="Silver" Foreground="Black" FontWeight="Bold" Click="RegisterButton_Click"/>
         </StackPanel>
