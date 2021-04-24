@@ -21,6 +21,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Components\Loader.xaml.cs">
       <DependentUpon>Loader.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Dialogs\ProductDialog.xaml.cs">
+      <DependentUpon>ProductDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ApiService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\RegexUtilities.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\LoginRequest.cs" />
@@ -46,6 +49,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Components\Loader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Dialogs\ProductDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
