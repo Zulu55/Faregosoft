@@ -5,13 +5,11 @@ namespace Faregosoft.NewApi.Models
     public class LoginRequest
     {
         [Required]
-        [MaxLength(100)]
-        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
         public string Email { get; set; }
 
         [Required]
-        [MaxLength(20)]
-        [MinLength(4)]
+        [MinLength(6)]
         public string Password { get; set; }
     }
 }
