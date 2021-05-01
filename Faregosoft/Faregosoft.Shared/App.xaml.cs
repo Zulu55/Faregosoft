@@ -1,4 +1,6 @@
-﻿using Faregosoft.Pages;
+﻿using Faregosoft.Helpers;
+using Faregosoft.Models;
+using Faregosoft.Pages;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -85,7 +87,15 @@ namespace Faregosoft
                 if (rootFrame.Content == null)
                 {
                     SaveParameters();
-                    rootFrame.Navigate(typeof(LoginPage), e.Arguments);
+                    TokenResponse token = Settings.GetToken();
+                    if (token != null && token.Expiration > DateTime.Now)
+                    {
+                        rootFrame.Navigate(typeof(MainPage), token);
+                    }
+                    else
+                    {
+                        rootFrame.Navigate(typeof(LoginPage), e.Arguments);
+                    }
                 }
 
                 window.Activate();

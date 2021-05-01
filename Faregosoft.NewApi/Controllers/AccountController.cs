@@ -52,7 +52,7 @@ namespace Faregosoft.NewApi.Controllers
                             _configuration["Tokens:Issuer"],
                             _configuration["Tokens:Audience"],
                             claims,
-                            expires: DateTime.UtcNow.AddDays(99),
+                            expires: DateTime.UtcNow.AddDays(3),
                             signingCredentials: credentials);
                         var results = new
                         {

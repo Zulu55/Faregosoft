@@ -1,8 +1,10 @@
 ﻿using Faregosoft.Components;
 using Faregosoft.Helpers;
 using Faregosoft.Models;
+using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
+using Windows.Storage;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -45,8 +47,10 @@ namespace Faregosoft.Pages
             }
 
             TokenResponse token = (TokenResponse)response.Result;
+            Settings.SaveToken(token);
             Frame.Navigate(typeof(MainPage), token);
         }
+
 
         private async Task<bool> ValidateFormAsync()
         {

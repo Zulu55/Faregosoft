@@ -26,6 +26,15 @@ namespace Faregosoft.Pages
 
         private async Task LoadCustomersAsync()
         {
+            TokenResponse token = MainPage.GetInstance().Token;
+            if (token.Expiration.ToLocalTime() < DateTime.Now)
+            {
+                MessageDialog dialog = new MessageDialog("Su sesión ha expirado.", "Error");
+                await dialog.ShowAsync();
+                MainPage.GetInstance().LogOut();
+                return;
+            }
+
             Loader loader = new Loader("Por favor espere...");
             loader.Show();
             Response response = await ApiService.GetListAsync<Customer>(Settings.GetApiUrl(), "api", "Customers", MainPage.GetInstance().Token.Token);

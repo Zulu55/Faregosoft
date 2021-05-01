@@ -1,4 +1,5 @@
-﻿using Faregosoft.Models;
+﻿using Faregosoft.Helpers;
+using Faregosoft.Models;
 using System;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
@@ -55,8 +56,14 @@ namespace Faregosoft.Pages
             ContentDialogResult dialog = await ConfirmLeaveAsync();
             if (dialog == ContentDialogResult.Primary)
             {
-                Frame.Navigate(typeof(LoginPage));
+                LogOut();
             }
+        }
+
+        public void LogOut()
+        {
+            Settings.SaveToken(null);
+            Frame.Navigate(typeof(LoginPage));
         }
 
         private void ProductosNavigationViewItem_Tapped(object sender, TappedRoutedEventArgs e)
