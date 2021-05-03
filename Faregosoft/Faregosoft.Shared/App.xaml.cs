@@ -35,8 +35,8 @@ namespace Faregosoft
         {
             ConfigureFilters(global::Uno.Extensions.LogExtensionPoint.AmbientLoggerFactory);
 
-            this.InitializeComponent();
-            this.Suspending += OnSuspending;
+             InitializeComponent();
+             Suspending += OnSuspending;
         }
 
         /// <summary>
@@ -108,7 +108,8 @@ namespace Faregosoft
         private void SaveParameters()
         {
             ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
-            localSettings.Values["ApiUrl"] = "https://faregosoftnewapi.azurewebsites.net/";
+            //localSettings.Values["ApiUrl"] = "https://faregosoftnewapi.azurewebsites.net/";
+            localSettings.Values["ApiUrl"] = "https://localhost:44395/";
         }
 
         /// <summary>

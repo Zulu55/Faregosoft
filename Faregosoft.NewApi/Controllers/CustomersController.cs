@@ -68,7 +68,8 @@ namespace Faregosoft.NewApi.Controllers
                 }
             }
 
-            return NoContent();
+            return Ok(customer);
+            //return NoContent();
         }
 
         [HttpPost]
