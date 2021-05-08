@@ -10,13 +10,15 @@ namespace Faregosoft.NewApi.Data
         {
         }
 
-        public DbSet<Product> Products { get; set; }
-
         public DbSet<Customer> Customers { get; set; }
 
-        public DbSet<Seller> Sellers { get; set; }
+        public DbSet<Product> Products { get; set; }
+        
+        public DbSet<ProductImage> ProductImages { get; set; }
 
         public DbSet<Providers> Providers { get; set; }
+
+        public DbSet<Seller> Sellers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -24,7 +26,6 @@ namespace Faregosoft.NewApi.Data
 
             modelBuilder.Entity<Customer>().HasIndex(c => c.Email).IsUnique();
             modelBuilder.Entity<Product>().HasIndex(p => p.Name).IsUnique();
-            modelBuilder.Entity<Seller>().HasIndex(s => s.FirstName);
             
             //como yo hago un indice complejo, osea mas de un campo
             //modelBuilder.Entity<Department>(dep =>

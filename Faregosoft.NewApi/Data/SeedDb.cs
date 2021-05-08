@@ -24,6 +24,8 @@ namespace Faregosoft.NewApi.Data
             await _context.Database.EnsureCreatedAsync();
             await CheckRolesAsync();
             await CheckUserAsync("Juan", "Zuluaga", "juan@yopmail.com", "322 311 4620");
+            await CheckUserAsync("Juan", "Reyes", "euclides@yopmail.com", "322 311 4620");
+            await CheckUserAsync("Fausto", "Reyes", "fausto@yopmail.com", "322 311 4620");
             await SeedProductsAync();
             await SeedCustomersAync();
             await SeedSellersAync();
@@ -65,7 +67,7 @@ namespace Faregosoft.NewApi.Data
             {
                 User user = await _context.Users.FirstOrDefaultAsync();
                 Random random = new Random();
-                for (int i = 0; i < 100; i++)
+                for (int i = 0; i < 345; i++)
                 {
                     _context.Products.Add(new Product { User = user, Name = $"Producto: {i}", Description = $"Producto: {i}", Price = random.Next(1, 100), Inventory = random.Next(1, 100), IsActive = true });
                 }
@@ -109,10 +111,28 @@ namespace Faregosoft.NewApi.Data
             if (!_context.Customers.Any())
             {
                 User user = await _context.Users.FirstOrDefaultAsync();
-                _context.Customers.Add(new Customer { User = user, FirstName = "Juan", LastName = "Reyes", Email = "juan@yopmail.com", Phonenumber = "303030", Address = "Calle Luna Calle Sol", IsActive = true });
-                _context.Customers.Add(new Customer { User = user, FirstName = "Fausto", LastName = "Reyes", Email = "fausto@yopmail.com", Phonenumber = "404040", Address = "Calle Luna Calle Sol", IsActive = true });
-                _context.Customers.Add(new Customer { User = user, FirstName = "Juan", LastName = "Zuluaga", Email = "zulu@yopmail.com", Phonenumber = "505050", Address = "Calle Luna Calle Sol", IsActive = true });
-                await _context.SaveChangesAsync();
+                for (int i = 0; i < 256; i++)
+                {
+                    _context.Customers.Add(new Customer 
+                    { 
+                        User = user, 
+                        FirstName = $"Nombres {i}", 
+                        LastName = $"Apellidos  {i}", 
+                        Email = $"cliente{i}@yopmail.com", 
+                        Phonenumber = $" {i}{i}", 
+                        Address = $"Dirección {i}", 
+                        IsActive = true 
+                    });
+                }
+
+                try
+                {
+                    await _context.SaveChangesAsync();
+                }
+                catch (Exception ex)
+                {
+                    ex.ToString();
+                }            
             }
         }
 

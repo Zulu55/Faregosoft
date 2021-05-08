@@ -34,7 +34,7 @@
                 </NavigationViewItem>
                 <NavigationViewItem Content="Proveedores" Tapped="ProvidersNavigationViewItem_Tapped">
                     <NavigationViewItem.Icon>
-                        <SymbolIcon Symbol="SolidStar"/>
+                        <SymbolIcon Symbol="Emoji"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </NavigationView.MenuItems>

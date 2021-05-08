@@ -108,6 +108,7 @@ namespace Faregosoft
         private void SaveParameters()
         {
             ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+            
             // publicacion azure ZULU
             localSettings.Values["ApiUrl"] = "https://faregosoftnewapi.azurewebsites.net/";
 

@@ -27,7 +27,11 @@ namespace Faregosoft.NewApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-            return await _context.Products.OrderBy(p => p.Name).ToListAsync();
+            return await _context.Products
+                .Include(p => p.ProductImages)
+                .Include(p => p.User)
+                .OrderBy(p => p.Name)
+                .ToListAsync();
         }
 
         [HttpGet("{id}")]

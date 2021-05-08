@@ -77,9 +77,6 @@ namespace Faregosoft.NewApi.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<Guid>("Guid")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<float>("Inventory")
                         .HasColumnType("real");
 
@@ -105,6 +102,26 @@ namespace Faregosoft.NewApi.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("Faregosoft.NewApi.Data.Entities.ProductImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<Guid>("Image")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductImages");
                 });
 
             modelBuilder.Entity("Faregosoft.NewApi.Data.Entities.Providers", b =>
@@ -173,6 +190,43 @@ namespace Faregosoft.NewApi.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Providers");
+                });
+
+            modelBuilder.Entity("Faregosoft.NewApi.Data.Entities.Seller", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<float>("Comision")
+                        .HasColumnType("real");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Sellers");
                 });
 
             modelBuilder.Entity("Faregosoft.NewApi.Data.Entities.User", b =>
@@ -399,10 +453,26 @@ namespace Faregosoft.NewApi.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Faregosoft.NewApi.Data.Entities.ProductImage", b =>
+                {
+                    b.HasOne("Faregosoft.NewApi.Data.Entities.Product", null)
+                        .WithMany("ProductImages")
+                        .HasForeignKey("ProductId");
+                });
+
             modelBuilder.Entity("Faregosoft.NewApi.Data.Entities.Providers", b =>
                 {
                     b.HasOne("Faregosoft.NewApi.Data.Entities.User", "User")
                         .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Faregosoft.NewApi.Data.Entities.Seller", b =>
+                {
+                    b.HasOne("Faregosoft.NewApi.Data.Entities.User", "User")
+                        .WithMany("Sellers")
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
@@ -457,6 +527,11 @@ namespace Faregosoft.NewApi.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Faregosoft.NewApi.Data.Entities.Product", b =>
+                {
+                    b.Navigation("ProductImages");
                 });
 
             modelBuilder.Entity("Faregosoft.NewApi.Data.Entities.User", b =>

@@ -1,17 +1,18 @@
-﻿using System;
+﻿using Faregosoft.NewApi.Data;
+using Faregosoft.NewApi.Data.Entities;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Faregosoft.NewApi.Data;
-using Faregosoft.NewApi.Data.Entities;
 
 namespace Faregosoft.NewApi.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Route("api/[controller]")]
     public class SellersController : ControllerBase
     {
         private readonly DataContext _context;
@@ -32,7 +33,7 @@ namespace Faregosoft.NewApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Seller>> GetSeller(int id)
         {
-            var seller = await _context.Sellers.FindAsync(id);
+            Seller seller = await _context.Sellers.FindAsync(id);
 
             if (seller == null)
             {
@@ -88,7 +89,7 @@ namespace Faregosoft.NewApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteSeller(int id)
         {
-            var seller = await _context.Sellers.FindAsync(id);
+            Seller seller = await _context.Sellers.FindAsync(id);
             if (seller == null)
             {
                 return NotFound();

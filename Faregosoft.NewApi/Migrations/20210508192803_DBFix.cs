@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Faregosoft.NewApi.Migrations
 {
-    public partial class AddAll : Migration
+    public partial class DBFix : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -205,6 +205,38 @@ namespace Faregosoft.NewApi.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Providers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Code = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),
+                    Category = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),
+                    Type = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),
+                    Contact = table.Column<string>(type: "nvarchar(120)", maxLength: 120, nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(120)", maxLength: 120, nullable: true),
+                    Country = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    City = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    CreditLimit = table.Column<double>(type: "float", nullable: false),
+                    PaymentCodition = table.Column<int>(type: "int", nullable: false),
+                    Observation = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Providers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Providers_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Sellers",
                 columns: table => new
                 {
@@ -290,9 +322,9 @@ namespace Faregosoft.NewApi.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Sellers_FirstName",
-                table: "Sellers",
-                column: "FirstName");
+                name: "IX_Providers_UserId",
+                table: "Providers",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Sellers_UserId",
@@ -322,6 +354,9 @@ namespace Faregosoft.NewApi.Migrations
 
             migrationBuilder.DropTable(
                 name: "Products");
+
+            migrationBuilder.DropTable(
+                name: "Providers");
 
             migrationBuilder.DropTable(
                 name: "Sellers");

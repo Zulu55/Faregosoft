@@ -1,5 +1,6 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace Faregosoft.NewApi.Data.Entities
 {
@@ -23,8 +24,12 @@ namespace Faregosoft.NewApi.Data.Entities
 
         public bool IsActive { get; set; }
 
-        public Guid Guid { get; set; }
-
         public User User { get; set; }
+
+        public string ImageFullPath => ProductImages == null || ProductImages.Count == 0
+            ? $"https://faregosoftnewapi.azurewebsites.net/images/noimage.png"
+            : ProductImages.FirstOrDefault().ImageFullPath;
+
+        public ICollection<ProductImage> ProductImages { get; set; }
     }
 }
