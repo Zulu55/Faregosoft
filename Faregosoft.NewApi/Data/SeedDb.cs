@@ -81,20 +81,24 @@ namespace Faregosoft.NewApi.Data
                 Random random = new Random();
                 for (int i = 0; i < 25; i++)
                 {
-                    _context.Providers.Add(new Providers {  User = user,  FirstName = $"Firstname: {i}",
-                                                            LastName = $"LastName: {i}",
-                                                            Code= $"Code: {i}",
-                                                            Category= $"Category: {i}",
-                                                            Type = $"TYPE: {i}",
-                                                            Contact = $"Category: {i}",
-                                                            Address = $"Direccion: {i}",
-                                                            Country = $"Pais: {i}",
-                                                            City = $"Ciudad: {i}",
-                                                            CreditLimit = random.Next(1, 100000),
-                                                            PaymentCodition = 30,
-                                                            Observation = $"Observation: {i}",
-                                                            IsActive = true});
+                    _context.Providers.Add(new Providers 
+                    {  
+                        User = user,  FirstName = $"Firstname: {i}",
+                        LastName = $"LastName: {i}",
+                        Code= $"Code: {i}",
+                        Category= $"Category: {i}",
+                        Type = $"TYPE: {i}",
+                        Contact = $"Category: {i}",
+                        Address = $"Dirección: {i}",
+                        Country = $"País: {i}",
+                        City = $"Ciudad: {i}",
+                        CreditLimit = random.Next(1, 100000),
+                        PaymentCodition = 30,
+                        Observation = $"Observatión: {i}",
+                        IsActive = true
+                    });
                 }
+
                 await _context.SaveChangesAsync();
             }
         }
