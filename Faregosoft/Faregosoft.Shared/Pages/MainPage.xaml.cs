@@ -70,5 +70,6 @@ namespace Faregosoft.Pages
         {
             MyFrame.Navigate(typeof(ProductsPage));
         }
-    }
+
+      }
 }
