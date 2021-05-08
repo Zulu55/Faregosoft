@@ -26,6 +26,7 @@ namespace Faregosoft.NewApi.Data
             await CheckUserAsync("Juan", "Zuluaga", "juan@yopmail.com", "322 311 4620");
             await SeedProductsAync();
             await SeedCustomersAync();
+            await SeedSellersAync();
         }
 
         private async Task<User> CheckUserAsync(string firstName, string lastName, string email, string phone)
@@ -79,6 +80,18 @@ namespace Faregosoft.NewApi.Data
                 _context.Customers.Add(new Customer { User = user, FirstName = "Juan", LastName = "Reyes", Email = "juan@yopmail.com", Phonenumber = "303030", Address = "Calle Luna Calle Sol", IsActive = true });
                 _context.Customers.Add(new Customer { User = user, FirstName = "Fausto", LastName = "Reyes", Email = "fausto@yopmail.com", Phonenumber = "404040", Address = "Calle Luna Calle Sol", IsActive = true });
                 _context.Customers.Add(new Customer { User = user, FirstName = "Juan", LastName = "Zuluaga", Email = "zulu@yopmail.com", Phonenumber = "505050", Address = "Calle Luna Calle Sol", IsActive = true });
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        private async Task SeedSellersAync()
+        {
+            if (!_context.Sellers.Any())
+            {
+                User user = await _context.Users.FirstOrDefaultAsync();
+                _context.Sellers.Add(new Seller { User = user, FirstName = "Pedro", LastName = "Ruiz", Comision = 10, Address = "Calle Sol", IsActive = true });
+                _context.Sellers.Add(new Seller { User = user, FirstName = "Carlos", LastName = "Peralta", Comision = 5, Address = "Calle Restauracion", IsActive = true });
+                _context.Sellers.Add(new Seller { User = user, FirstName = "Julio", LastName = "Almonte", Comision = 8, Address = "Calle San Luis", IsActive = true });
                 await _context.SaveChangesAsync();
             }
         }

@@ -107,6 +107,45 @@ namespace Faregosoft.NewApi.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("Faregosoft.NewApi.Data.Entities.Seller", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<float>("Comision")
+                        .HasColumnType("real");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FirstName");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Sellers");
+                });
+
             modelBuilder.Entity("Faregosoft.NewApi.Data.Entities.User", b =>
                 {
                     b.Property<string>("Id")
@@ -331,6 +370,15 @@ namespace Faregosoft.NewApi.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("Faregosoft.NewApi.Data.Entities.Seller", b =>
+                {
+                    b.HasOne("Faregosoft.NewApi.Data.Entities.User", "User")
+                        .WithMany("Sellers")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -387,6 +435,8 @@ namespace Faregosoft.NewApi.Migrations
                     b.Navigation("Customers");
 
                     b.Navigation("Products");
+
+                    b.Navigation("Sellers");
                 });
 #pragma warning restore 612, 618
         }
