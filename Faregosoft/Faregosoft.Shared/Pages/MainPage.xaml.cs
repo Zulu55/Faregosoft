@@ -65,8 +65,13 @@ namespace Faregosoft.Pages
             Settings.SaveToken(null);
             Frame.Navigate(typeof(LoginPage));
         }
-
-        private void ProductosNavigationViewItem_Tapped(object sender, TappedRoutedEventArgs e)
+        
+    private void ProvidersNavigationViewItem_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            MyFrame.Navigate(typeof(ProvidersPage));
+        }
+    
+    private void ProductosNavigationViewItem_Tapped(object sender, TappedRoutedEventArgs e)
         {
             MyFrame.Navigate(typeof(ProductsPage));
         }

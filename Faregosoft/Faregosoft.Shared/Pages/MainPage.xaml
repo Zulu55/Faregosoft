@@ -32,6 +32,11 @@
                         <SymbolIcon Symbol="SolidStar"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
+                <NavigationViewItem Content="Proveedores" Tapped="ProvidersNavigationViewItem_Tapped">
+                    <NavigationViewItem.Icon>
+                        <SymbolIcon Symbol="SolidStar"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
             </NavigationView.MenuItems>
             <NavigationView.PaneFooter>
                 <NavigationViewItem Content="Sincronizar">

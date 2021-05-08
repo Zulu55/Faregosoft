@@ -26,6 +26,7 @@ namespace Faregosoft.NewApi.Data
             await CheckUserAsync("Juan", "Zuluaga", "juan@yopmail.com", "322 311 4620");
             await SeedProductsAync();
             await SeedCustomersAync();
+            await SeedProvidersAync();
         }
 
         private async Task<User> CheckUserAsync(string firstName, string lastName, string email, string phone)
@@ -66,6 +67,33 @@ namespace Faregosoft.NewApi.Data
                 for (int i = 0; i < 100; i++)
                 {
                     _context.Products.Add(new Product { User = user, Name = $"Producto: {i}", Description = $"Producto: {i}", Price = random.Next(1, 100), Inventory = random.Next(1, 100), IsActive = true });
+                }
+                await _context.SaveChangesAsync();
+            }
+        }
+
+
+        private async Task SeedProvidersAync()
+        {
+            if (!_context.Providers.Any())
+            {
+                User user = await _context.Users.FirstOrDefaultAsync();
+                Random random = new Random();
+                for (int i = 0; i < 25; i++)
+                {
+                    _context.Providers.Add(new Providers {  User = user,  FirstName = $"Firstname: {i}",
+                                                            LastName = $"LastName: {i}",
+                                                            Code= $"Code: {i}",
+                                                            Category= $"Category: {i}",
+                                                            Type = $"TYPE: {i}",
+                                                            Contact = $"Category: {i}",
+                                                            Address = $"Direccion: {i}",
+                                                            Country = $"Pais: {i}",
+                                                            City = $"Ciudad: {i}",
+                                                            CreditLimit = random.Next(1, 100000),
+                                                            PaymentCodition = 30,
+                                                            Observation = $"Observation: {i}",
+                                                            IsActive = true});
                 }
                 await _context.SaveChangesAsync();
             }

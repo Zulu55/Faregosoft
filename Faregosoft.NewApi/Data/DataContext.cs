@@ -14,6 +14,8 @@ namespace Faregosoft.NewApi.Data
 
         public DbSet<Customer> Customers { get; set; }
 
+        public DbSet<Providers> Providers { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

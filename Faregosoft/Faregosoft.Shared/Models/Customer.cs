@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Faregosoft.Models
+﻿namespace Faregosoft.Models
 {
     public class Customer
     {
