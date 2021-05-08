@@ -1,5 +1,4 @@
-﻿using Faregosoft.NewApi.Enums;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
@@ -21,5 +20,9 @@ namespace Faregosoft.NewApi.Data.Entities
 
         [JsonIgnore]
         public ICollection<Customer> Customers { get; set; }
+       
+        [JsonIgnore]
+        public ICollection<Seller> Sellers { get; set; }
+       
     }
 }

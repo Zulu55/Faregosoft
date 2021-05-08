@@ -21,6 +21,11 @@ namespace Faregosoft.NewApi.Controllers
         private readonly IUserHelper _userHelper;
         private readonly IConfiguration _configuration;
 
+        /// <summary>
+        /// Tesr
+        /// </summary>
+        /// <param name="userHelper"></param>
+        /// <param name="configuration"></param>
         public AccountController(IUserHelper userHelper, IConfiguration configuration)
         {
             _userHelper = userHelper;

@@ -464,6 +464,8 @@ namespace Faregosoft.NewApi.Migrations
                     b.Navigation("Customers");
 
                     b.Navigation("Products");
+
+                    b.Navigation("Sellers");
                 });
 #pragma warning restore 612, 618
         }
