@@ -17,12 +17,12 @@ namespace Faregosoft.NewApi.Data.Entities
 
         [MaxLength(200)]
         public string Address { get; set; }
+
         [Required]
         public float Comision { get; set; }
 
         public bool IsActive { get; set; }
 
         public User User { get; set; }
-
     }
 }

@@ -23,7 +23,13 @@ namespace Faregosoft.NewApi.Data
             modelBuilder.Entity<Customer>().HasIndex(c => c.Email).IsUnique();
             modelBuilder.Entity<Product>().HasIndex(p => p.Name).IsUnique();
             modelBuilder.Entity<Seller>().HasIndex(s => s.FirstName);
-           //como yo hago un indice complejo, osea mas de un campo
+            
+            //como yo hago un indice complejo, osea mas de un campo
+            //modelBuilder.Entity<Department>(dep =>
+            //{
+            //    dep.HasIndex("Name", "CountryId").IsUnique();
+            //    dep.HasOne(d => d.Country).WithMany(c => c.Departments).OnDelete(DeleteBehavior.Cascade);
+            //});
         }
     }
 }
