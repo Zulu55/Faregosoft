@@ -109,15 +109,13 @@ namespace Faregosoft
         {
             ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
             // publicacion azure ZULU
-            //localSettings.Values["ApiUrl"] = "https://faregosoftnewapi.azurewebsites.net/";
+            localSettings.Values["ApiUrl"] = "https://faregosoftnewapi.azurewebsites.net/";
 
             // Ejecucion
-            localSettings.Values["ApiUrl"] = "https://localhost:44395/";
-            
+            //localSettings.Values["ApiUrl"] = "https://localhost:44395/";
+
             // publicacion local 
             //localSettings.Values["ApiUrl"] = "http://localhost:8078/";
-
-        
         }
 
         /// <summary>
