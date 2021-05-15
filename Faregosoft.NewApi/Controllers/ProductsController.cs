@@ -34,6 +34,24 @@ namespace Faregosoft.NewApi.Controllers
                 .ToListAsync();
         }
 
+        [HttpGet]
+        [Route("GetCount")]
+        public IActionResult GetCount()
+        {
+            return Ok(_context.Products.Count());
+        }
+
+        [HttpGet]
+        [Route("GetProductsPaged/{page}/{size}")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProductsPaged(int page, int size)
+        {
+            return await _context.Products
+                .Include(p => p.ProductImages)
+                .Skip(page * size)
+                .Take(size)
+                .ToListAsync();
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
