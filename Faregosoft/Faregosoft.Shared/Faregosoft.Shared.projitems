@@ -31,10 +31,13 @@
       <DependentUpon>ProductDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ApiService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ConverterHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\RegexUtilities.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Settings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\AddProductImageRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Customer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\LoginRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ProductImage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Provider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Product.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\RegisterUserModel.cs" />
@@ -111,7 +114,10 @@
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Assets\delete.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\edit.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\icon-camera.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\icon-select-image.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\icon-x.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\icon-x2.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\ic_exit_to_app.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\product.png" />
   </ItemGroup>
