@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Faregosoft.NewApi.Migrations
 {
-    public partial class DBFix : Migration
+    public partial class IDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -190,7 +190,6 @@ namespace Faregosoft.NewApi.Migrations
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Inventory = table.Column<float>(type: "real", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    Guid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
@@ -260,6 +259,26 @@ namespace Faregosoft.NewApi.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "ProductImages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Image = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductImages", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProductImages_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -311,6 +330,11 @@ namespace Faregosoft.NewApi.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ProductImages_ProductId",
+                table: "ProductImages",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Products_Name",
                 table: "Products",
                 column: "Name",
@@ -353,7 +377,7 @@ namespace Faregosoft.NewApi.Migrations
                 name: "Customers");
 
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "ProductImages");
 
             migrationBuilder.DropTable(
                 name: "Providers");
@@ -363,6 +387,9 @@ namespace Faregosoft.NewApi.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

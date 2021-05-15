@@ -21,15 +21,22 @@ namespace Faregosoft.NewApi.Data
 
         public async Task SeedAsync()
         {
-            await _context.Database.EnsureCreatedAsync();
-            await CheckRolesAsync();
-            await CheckUserAsync("Juan", "Zuluaga", "juan@yopmail.com", "322 311 4620");
-            await CheckUserAsync("Juan", "Reyes", "euclides@yopmail.com", "322 311 4620");
-            await CheckUserAsync("Fausto", "Reyes", "fausto@yopmail.com", "322 311 4620");
-            await SeedProductsAync();
-            await SeedCustomersAync();
-            await SeedSellersAync();
-            await SeedProvidersAync();
+            try
+            {
+                await _context.Database.EnsureCreatedAsync();
+                await CheckRolesAsync();
+                await CheckUserAsync("Juan", "Zuluaga", "juan@yopmail.com", "322 311 4620");
+                await CheckUserAsync("Juan", "Reyes", "euclides@yopmail.com", "322 311 4620");
+                await CheckUserAsync("Fausto", "Reyes", "fausto@yopmail.com", "322 311 4620");
+                await SeedProductsAync();
+                await SeedCustomersAync();
+                await SeedSellersAync();
+                await SeedProvidersAync();
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+            }
         }
 
         private async Task<User> CheckUserAsync(string firstName, string lastName, string email, string phone)

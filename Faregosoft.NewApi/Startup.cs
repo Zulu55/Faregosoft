@@ -38,8 +38,13 @@ namespace Faregosoft.NewApi
 
             services.AddDbContext<DataContext>(cfg =>
             {
-                cfg.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                cfg.UseSqlServer(Configuration.GetConnectionString("SQLConnection"));
             });
+
+            //services.AddDbContext<DataContext>(cfg =>
+            //{
+            //    cfg.UseOracle(Configuration.GetConnectionString("OracleConnection"));
+            //});
 
             services
                 .AddAuthentication()

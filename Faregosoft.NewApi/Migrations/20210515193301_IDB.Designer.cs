@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Faregosoft.NewApi.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210508200838_ProductImages")]
-    partial class ProductImages
+    [Migration("20210515193301_IDB")]
+    partial class IDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
