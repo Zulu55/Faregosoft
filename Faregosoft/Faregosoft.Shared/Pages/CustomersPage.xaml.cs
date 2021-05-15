@@ -16,6 +16,10 @@ namespace Faregosoft.Pages
 {
     public sealed partial class CustomersPage : Page
     {
+        private int _totalRecords;
+        private Pagination _pagination;
+        private Loader _loader;
+
         public CustomersPage()
         {
             InitializeComponent();
@@ -35,10 +39,32 @@ namespace Faregosoft.Pages
                 return;
             }
 
-            Loader loader = new Loader("Por favor espere...");
-            loader.Show();
-            Response response = await ApiService.GetListAsync<Customer>(Settings.GetApiUrl(), "api", "Customers", MainPage.GetInstance().Token.Token);
-            loader.Close();
+            _loader = new Loader("Por favor espere...");
+            _loader.Show();
+            Response response = await ApiService.GetCountAsync(Settings.GetApiUrl(), "api", "Customers", MainPage.GetInstance().Token.Token);
+            _loader.Close();
+
+            if (!response.IsSuccess)
+            {
+                MessageDialog dialog = new MessageDialog(response.Message, "Error");
+                await dialog.ShowAsync();
+                return;
+            }
+
+            _totalRecords = (int)response.Result;
+            _pagination = new Pagination(_totalRecords);
+            _pagination.PageChanged += Pagination_PageChanged;
+            MyPagination.Children.Clear();
+            MyPagination.Children.Add(_pagination);
+
+            await GetCustomersAsync();
+        }
+
+        private async Task GetCustomersAsync()
+        {
+            _loader.Show();
+            Response response = await ApiService.GetListPagedAsync<Customer>(Settings.GetApiUrl(), "api", "Customers", _pagination.Page - 1, _pagination.Size, MainPage.GetInstance().Token.Token);
+            _loader.Close();
 
             if (!response.IsSuccess)
             {
@@ -50,6 +76,11 @@ namespace Faregosoft.Pages
             List<Customer> customers = (List<Customer>)response.Result;
             Customers = new ObservableCollection<Customer>(customers);
             RefreshList();
+        }
+
+        private async void Pagination_PageChanged(object sender, EventArgs e)
+        {
+            await GetCustomersAsync();
         }
 
         private void RefreshList()

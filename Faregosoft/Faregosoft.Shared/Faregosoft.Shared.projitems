@@ -21,6 +21,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Components\Loader.xaml.cs">
       <DependentUpon>Loader.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Components\Pagination.xaml.cs">
+      <DependentUpon>Pagination.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Dialogs\ProviderDialog.xaml.cs">
       <DependentUpon>ProviderDialog.xaml</DependentUpon>
     </Compile>
@@ -37,6 +40,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\AddProductImageRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Customer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\LoginRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\PagerModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ProductImage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Provider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Product.cs" />
@@ -65,6 +69,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Components\Loader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Components\Pagination.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -114,7 +122,11 @@
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Assets\delete.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\edit.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\icon-arrow-left.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\icon-arrow-right.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\icon-camera.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\icon-FirstPage.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\icon-LastPage.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\icon-select-image.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\icon-x.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\icon-x2.png" />
